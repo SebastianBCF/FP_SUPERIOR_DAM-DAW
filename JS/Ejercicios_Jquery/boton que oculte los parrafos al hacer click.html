@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocultar Párrafos con jQuery</title>
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Código jQuery para ocultar los párrafos al hacer clic en el botón
+        // cuando el documento este listo hace la funcion
+        $(document).ready(function(){
+            // Evento click para el botón
+            $("#ocultarBtn").click(function(){
+                //despues tomaa los parraafos y los oculta con el hide osea es como si en javaScript fuera display none
+                $("p").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="ocultarBtn">Ocultar Párrafos</button>
+    <p>Este es el primer párrafo.</p>
+    <p>Este es el segundo párrafo.</p>
+    <p>Este es el tercer párrafo.</p>
+</body>
+</html>

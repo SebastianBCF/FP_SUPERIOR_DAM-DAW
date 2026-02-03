@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Clasificación por edad</title>
+  <style>body{font-family:"Segoe UI", Roboto, Arial, sans-serif;line-height:1.5;padding:1rem}button{padding:.5rem 1rem}</style>
+</head>
+<body>
+  <h1>Clasificar persona por edad</h1>
+  <p>Pulsa el botón y escribe una edad. El resultado aparecerá abajo.</p>
+  <button id="btnClasificar">Clasificar edad</button>
+  <div id="resultado" style="margin-top:1rem;padding:.5rem;border:1px solid #ddd;max-width:40rem"></div>
+  <script src="Persona_Edad.js"></script>
+  <script>
+    // Conectar el botón con la función declarada en Persona_Edad.js
+    document.getElementById('btnClasificar').addEventListener('click', function () {
+      if (typeof clasificarEdad === 'function') clasificarEdad();
+      else alert('Función clasificarEdad no disponible.');
+    });
+  </script>
+</body>
+</html>

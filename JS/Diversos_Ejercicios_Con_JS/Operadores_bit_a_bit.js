@@ -1,0 +1,12 @@
+let numero1 = Number(prompt("Ingresa el primer número:"));
+let numero2 = Number(prompt("Ingresa el segundo número:"));
+                    let andBit = numero1 & numero2;  
+                    let orBit = numero1 | numero2;   
+                    let xorBit = numero1 ^ numero2;  
+                    let notNumero1 = ~numero1;       
+                    let notNumero2 = ~numero2;       
+                        console.log(`${numero1} & ${numero2} = ${andBit} (AND bit a bit)`);
+                        console.log(`${numero1} | ${numero2} = ${orBit} (OR bit a bit)`);
+                        console.log(`${numero1} ^ ${numero2} = ${xorBit} (XOR bit a bit)`);
+                        console.log(`~${num1ero} = ${notNumero1} (NOT bit a bit del primer número)`);
+                        console.log(`~${numero2} = ${notNumero2} (NOT bit a bit del segundo número)`);
