@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Probar Error</h2>
+    <button onclick="probar()">Probar URL Incorrecta</button>
+    <div id="resultado"></div>
+
+    <script>
+      function probar() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/incorrecto");
+        xhr.onload = function () {
+          if (xhr.status >= 400) {
+            document.getElementById("resultado").innerHTML =
+              "Error: " + xhr.status;
+          }
+        };
+        xhr.onerror = function () {
+          document.getElementById("resultado").innerHTML = "Error de conexión";
+        };
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>

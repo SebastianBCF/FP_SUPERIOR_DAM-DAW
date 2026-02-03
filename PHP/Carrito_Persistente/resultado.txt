@@ -1,0 +1,8 @@
+Archivos Adjuntados
+-index.php
+
+Pasos para ver el resultado
+
+1. entras a la pagina la cual tiene dos botonos ingles y español seleccionas el idioma que quieras usar para la pagina y depende
+del idioma el cual selecciones te aparecera la pagina de ese idioma tambien hay un link el cual dice reset idioma y te manda otra
+vez a el apartado de los botones para que selecciones el idioma que quieras usuar.

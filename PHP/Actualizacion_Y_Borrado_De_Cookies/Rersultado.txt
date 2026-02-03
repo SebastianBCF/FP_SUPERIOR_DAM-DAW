@@ -1,0 +1,12 @@
+Archivos Adjuntados 
+-Actualizar_cookie.php
+-borrar_cookie.php
+Pasos para ver el resultado
+
+1. abres el archivo Actualizar_cookie introduces un valor el cual sera la contraseña y precionas el boron Actualizar cookie
+esto lo que hara es que cambie el valor que tiene usuario colocando el valor que pones tambien lo que hara es salirte un mensaje
+diciendo cookie actualizada correctamente y el valor de usuario que colocaste.
+
+2. Para borrar una cookie lo que hace es que te sale la pagina html y colocara un boton el cual lo que hace es coger el valor del
+usuario y el tiempo en que estaba puesta la cookie y lo resta haciendo que se borre esa cookie y que despues de precionar el boton
+te salga por pantalla cookie eliminad correctamente.

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <body>
+    <label for="buscar">Buscar post:</label>
+    <input type="text" id="buscar" />
+    <div id="resultados"></div>
+
+    <script>
+      var timer;
+      document.getElementById("buscar").oninput = function () {
+        var valor = this.value.toLowerCase();
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          if (!valor) {
+            document.getElementById("resultados").innerHTML = "";
+            return;
+          }
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+          xhr.onload = function () {
+            var posts = JSON.parse(xhr.responseText);
+            var filtrados = posts.filter(function (p) {
+              return p.title.toLowerCase().includes(valor);
+            });
+            document.getElementById("resultados").innerHTML = filtrados
+              .map(function (p) {
+                return "<p>" + p.title + "</p>";
+              })
+              .join("");
+          };
+          xhr.send();
+        }, 500);
+      };
+    </script>
+  </body>
+</html>

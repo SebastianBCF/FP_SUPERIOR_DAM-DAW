@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <body>
+    <form id="formPost">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" />
+      <label for="comentario">Comentario:</label>
+      <input type="text" id="comentario" />
+      <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+      document.getElementById("formPost").onsubmit = function (e) {
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var datos = JSON.stringify({
+          nombre: document.getElementById("nombre").value,
+          comentario: document.getElementById("comentario").value,
+        });
+
+        xhr.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onload = function () {
+          alert(xhr.responseText);
+        };
+        xhr.send(datos);
+      };
+    </script>
+  </body>
+</html>

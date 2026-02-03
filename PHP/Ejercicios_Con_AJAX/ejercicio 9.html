@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Fotos</h2>
+    <div id="fotos"></div>
+
+    <script>
+      let pagina = 1;
+      const fotosDiv = document.getElementById("fotos");
+
+      function cargarFotos() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/photos");
+        xhr.onload = function () {
+          const todasFotos = JSON.parse(xhr.responseText);
+          const inicio = (pagina - 1) * 20;
+          const fin = inicio + 20;
+
+          for (let i = inicio; i < fin && i < todasFotos.length; i++) {
+            fotosDiv.innerHTML += `
+                <div>
+                    <p><b>${todasFotos[i].title}</b></p>
+                    <img src="${todasFotos[i].thumbnailUrl}">
+                </div>
+                <hr>
+            `;
+          }
+
+          pagina++;
+        };
+        xhr.send();
+      }
+
+      window.onscroll = function () {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          cargarFotos();
+        }
+      };
+
+      cargarFotos();
+    </script>
+  </body>
+</html>

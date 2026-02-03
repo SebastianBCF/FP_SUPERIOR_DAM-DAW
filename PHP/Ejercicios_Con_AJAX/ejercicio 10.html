@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Posts con Autores</h2>
+    <div id="lista"></div>
+
+    <script>
+      let postsLista = [];
+      let usuariosLista = [];
+
+      const xhr1 = new XMLHttpRequest();
+      xhr1.open("GET", "https://jsonplaceholder.typicode.com/posts");
+      xhr1.onload = function () {
+        postsLista = JSON.parse(xhr1.responseText);
+        if (usuariosLista.length > 0) mostrarCombinado();
+      };
+      xhr1.send();
+
+      const xhr2 = new XMLHttpRequest();
+      xhr2.open("GET", "https://jsonplaceholder.typicode.com/users");
+      xhr2.onload = function () {
+        usuariosLista = JSON.parse(xhr2.responseText);
+        if (postsLista.length > 0) mostrarCombinado();
+      };
+      xhr2.send();
+
+      function mostrarCombinado() {
+        const listaDiv = document.getElementById("lista");
+        const mapaUsuarios = {};
+
+        for (let i = 0; i < usuariosLista.length; i++) {
+          mapaUsuarios[usuariosLista[i].id] = usuariosLista[i].name;
+        }
+
+        for (let i = 0; i < postsLista.length; i++) {
+          const autor = mapaUsuarios[postsLista[i].userId] || "Desconocido";
+          listaDiv.innerHTML += `
+            <div>
+                <p><b>${postsLista[i].title}</b></p>
+                <p>${postsLista[i].body}</p>
+                <p><i>Autor: ${autor}</i></p>
+                <hr>
+            </div>
+        `;
+        }
+      }
+    </script>
+  </body>
+</html>

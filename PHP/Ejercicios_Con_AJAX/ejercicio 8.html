@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Lista de Posts</h2>
+    <div id="lista"></div>
+
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
+      xhr.onload = function () {
+        const posts = JSON.parse(xhr.responseText);
+        const lista = document.getElementById("lista");
+
+        for (let i = 0; i < posts.length; i++) {
+          lista.innerHTML += `
+            <div id="post-${posts[i].id}">
+                <p><b>${posts[i].title}</b></p>
+                <p>${posts[i].body}</p>
+                <button onclick="eliminar(${posts[i].id})">Eliminar</button>
+                <hr>
+            </div>
+        `;
+        }
+      };
+      xhr.send();
+
+      function eliminar(id) {
+        const xhr2 = new XMLHttpRequest();
+        xhr2.open("DELETE", `https://jsonplaceholder.typicode.com/posts/${id}`);
+        xhr2.onload = function () {
+          document.getElementById(`post-${id}`).remove();
+        };
+        xhr2.send();
+      }
+    </script>
+  </body>
+</html>

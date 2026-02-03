@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Comentarios</h2>
+    <div id="lista"></div>
+    <button onclick="cambiar(-1)">Anterior</button>
+    <span id="pag">1</span>
+    <button onclick="cambiar(1)">Siguiente</button>
+
+    <script>
+      let pagina = 1;
+      let comentarios = [];
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/comments");
+      xhr.onload = function () {
+        comentarios = JSON.parse(xhr.responseText);
+        mostrar();
+      };
+      xhr.send();
+
+      function mostrar() {
+        const inicio = (pagina - 1) * 10;
+        const fin = inicio + 10;
+        const listaDiv = document.getElementById("lista");
+        listaDiv.innerHTML = "";
+
+        for (let i = inicio; i < fin && i < comentarios.length; i++) {
+          listaDiv.innerHTML += `<p><b>${comentarios[i].name}:</b> ${comentarios[i].body}</p>`;
+        }
+
+        document.getElementById("pag").textContent = pagina;
+      }
+
+      function cambiar(dir) {
+        pagina += dir;
+        if (pagina < 1) pagina = 1;
+        mostrar();
+      }
+    </script>
+  </body>
+</html>
